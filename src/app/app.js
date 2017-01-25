@@ -1,4 +1,6 @@
 import angular from 'angular';
+import main from './main/main.directive';
+import MainCtrl from './main/main.controller';
 import map from './map/map.directive';
 import MapCtrl from './map/map.controller';
 import control from './control/control.directive';
@@ -14,6 +16,8 @@ const MODULE_NAME = 'app';
 angular.module(MODULE_NAME, [
   require('angular-drag-drop')
 ])
+  .directive('main', main)
+  .controller('MainCtrl', MainCtrl)
   .directive('map', map)
   .controller('MapCtrl', MapCtrl)
   .directive('control', control)
