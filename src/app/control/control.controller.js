@@ -16,9 +16,12 @@ export default class ControlCtrl {
       
     geocoder.geocode(parameters,
       result => {
-        this.positionService.selectPosition(
-          result.Response.View[0].Result[0].Location.DisplayPosition
-        );
+        console.log(result);
+        if (result.Response.View.length) {
+          this.positionService.selectPosition(
+            result.Response.View[0].Result[0].Location.DisplayPosition
+          );
+        }
       }, error => {
         alert(error);
       });
