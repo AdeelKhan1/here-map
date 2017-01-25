@@ -9,8 +9,18 @@
     </div>
 </div>
 <div class="waypoints" ng-if="control.getWaypointNames().length">
+    <div class="mode-selector">
+        <div class="mode" ng-click="control.setMode('pedestrian')"><i class="fa fa-user"></i></div>
+        <div class="mode" ng-click="control.setMode('car')"><i class="fa fa-car"></i></div>
+        <div class="mode" ng-click="control.setMode('publicTransport')"><i class="fa fa-bus"></i></div>
+    </div>
     <div class="waypoint" ng-repeat="waypoint in control.getWaypointNames() track by $index" 
-        ng-click="control.navigate(waypoint)">
+        ng-click="control.navigate(waypoint)"
+        drag-container drop-container
+        drag-data="$index"
+        on-drop="control.drop($event, $index)"
+        on-drag-start="control.drag($event, $index)"
+        on-drag-over="control.allowDrop($event)">
         <i class="fa" ng-class="{'fa-flag-checkered': $last, 'fa-flag-o': !$last}" ng-click=""></i>
         {{waypoint}} 
         <i class="fa fa-trash" ng-click="control.removeWaypoint($index)"></i>

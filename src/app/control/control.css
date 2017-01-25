@@ -108,3 +108,23 @@ control {
     color: #FFF;
     cursor: grab;
 }
+
+.mode-selector {
+    display: inline-flex;
+    width: 100%;
+    border-bottom: 1px solid #DADADA;
+}
+
+.mode-selector > .mode {
+    width: 33%;
+    padding: 10px;
+    border-right: 1px solid #DADADA;
+}
+
+.mode-selector > .mode:hover {
+    cursor: pointer;
+}
+
+.mode-selector > .mode:last-of-type {
+    border-right: none;
+}

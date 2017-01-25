@@ -13,11 +13,12 @@ export default class RouteService {
 
     setMode(mode) {
         this.mode = `fastest;${mode}`;
+        this.$rootScope.$broadcast('route.waypoints.updated');
     }
 
     calculateRoute(callback) {
         this.router.calculateRoute(this.getParameters(), callback, (error) => {
-          console.log('calculateRoute:', error);
+          console.error('calculateRoute:', error);
         });
     }
 
@@ -27,6 +28,19 @@ export default class RouteService {
 
     getWaypointNames() {
         return this.names;
+    }
+
+    switchWaypoints(aIdx, bIdx) {
+        let a = this.waypoints[aIdx];
+        let aName = this.names[aIdx];
+
+        this.waypoints[aIdx] = this.waypoints[bIdx];
+        this.waypoints[bIdx] = a;
+
+        this.names[aIdx] = this.names[bIdx];
+        this.names[bIdx] = aName;
+
+        this.$rootScope.$broadcast('route.waypoints.updated');
     }
 
     addWaypoint(result, name) {

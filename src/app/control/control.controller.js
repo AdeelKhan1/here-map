@@ -1,8 +1,9 @@
 export default class ControlCtrl {
-  constructor($window, $element, PlatformService, PositionService, RouteService) {
+  constructor($scope, $element, $window, PlatformService, PositionService, RouteService) {
     this.platform = PlatformService.platform;
     this.positionService = PositionService;
     this.routeService = RouteService;
+    this.$scope = $scope;
 
     this.searchString = "";
     this.searchResults = [];
@@ -48,13 +49,34 @@ export default class ControlCtrl {
         searchtext: result,
         gen: '8'
     }, response => {
-      this.routeService.addWaypoint(response, result);
+      this.$scope.$apply(() => {
+        this.routeService.addWaypoint(response, result);
+      });
     });
   }
 
   removeWaypoint(i) {
     this.routeService.removeWaypoint(i);
   }
+
+  setMode(mode) {
+    this.routeService.setMode(mode);
+  }
+
+  allowDrop(event) {
+    event.preventDefault();
+  }
+
+  drag(event, $index) {
+    event.dataTransfer.setData('index', $index);
+  }
+
+  drop(event, $index) {
+    let aIndex = event.dataTransfer.getData('index');
+    this.routeService.switchWaypoints(aIndex, $index);
+  }
 }
 
-ControlCtrl.$inject = ['$window', '$element', 'PlatformService', 'PositionService', 'RouteService'];
+ControlCtrl.$inject = [
+  '$scope', '$element', '$window', 'PlatformService', 'PositionService', 'RouteService'
+];
