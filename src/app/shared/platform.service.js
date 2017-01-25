@@ -2,7 +2,8 @@ export default class PlatformService {
     constructor() {
         this.platform = new H.service.Platform({
             'app_id': 'rjavUTHi8Ro5SdWrQDHf',
-            'app_code': 'b9naScHzM-oPSs6SopEtIw'
+            'app_code': 'b9naScHzM-oPSs6SopEtIw',
+            'useHTTPS': true
         });
     }
 }
