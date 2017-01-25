@@ -1,5 +1,7 @@
 export default class MainCtrl {
     constructor($scope, $window, $timeout) {
+        this.timer;
+
         this.$scope = $scope;
         this.$window = $window;
         this.$timeout = $timeout;
@@ -14,11 +16,11 @@ export default class MainCtrl {
             width: value.w + 'px',
             height: value.h + 'px'
         };
-        let timeout = this.$timeout(() => {
+        this.timer = this.$timeout(() => {
             this.$scope.$apply(() => {
                 this.draw = !this.draw;
                 if (this.draw) {
-                    $timeout.cancel(timeout);
+                    this.$timeout.cancel(this.timer);
                 }
             });
         })
