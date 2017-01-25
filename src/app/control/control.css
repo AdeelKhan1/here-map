@@ -79,6 +79,17 @@ control {
     color: #FFF;
 }
 
+.waypoints .waypoint .fa-flag-o,
+.waypoints .waypoint .fa-flag-checkered {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 42px;
+    text-align: center;
+    line-height: 42px;
+}
+
 .waypoints .waypoint .fa-trash {
     display: none;
     position: absolute;
@@ -90,7 +101,10 @@ control {
     line-height: 42px;
 }
 
-.waypoints .waypoint .fa-trash:hover {
+.waypoints .waypoint .fa-trash:hover,
+.waypoints .waypoint .fa-flag-o:hover,
+.waypoints .waypoint .fa-flag-checkered:hover {
     background-color: mediumpurple;
     color: #FFF;
+    cursor: grab;
 }

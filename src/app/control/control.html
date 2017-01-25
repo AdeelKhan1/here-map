@@ -8,10 +8,12 @@
                 ng-model-options="{ debounce: 100 }" ng-change="control.search()"></input>
     </div>
 </div>
-<div class="waypoints" ng-if="control.waypoints.length">
-    <div class="waypoint" ng-repeat="waypoint in control.waypoints track by $index" 
+<div class="waypoints" ng-if="control.getWaypointNames().length">
+    <div class="waypoint" ng-repeat="waypoint in control.getWaypointNames() track by $index" 
         ng-click="control.navigate(waypoint)">
-         {{waypoint}} <i class="fa fa-trash" ng-click="control.removeWaypoint($index)"></i>
+        <i class="fa" ng-class="{'fa-flag-checkered': $last, 'fa-flag-o': !$last}" ng-click=""></i>
+        {{waypoint}} 
+        <i class="fa fa-trash" ng-click="control.removeWaypoint($index)"></i>
     </div>
 </div>
 

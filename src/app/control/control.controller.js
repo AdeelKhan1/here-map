@@ -1,30 +1,28 @@
 export default class ControlCtrl {
-  constructor($window, $element, PlatformService, PositionService) {
+  constructor($window, $element, PlatformService, PositionService, RouteService) {
     this.platform = PlatformService.platform;
-    this.searchString = "";
     this.positionService = PositionService;
+    this.routeService = RouteService;
+
+    this.searchString = "";
     this.searchResults = [];
-    this.waypoints = [];
     this.limit = 5;
   }
 
-  navigate(string) {
-    let geocoder = this.platform.getGeocodingService(),
-      parameters = {
-        searchtext: string,
-        gen: '8'};
-      
-    geocoder.geocode(parameters,
+  fetchGeocode(params, callback) {
+    this.platform.getGeocodingService().geocode(params,
       result => {
-        console.log(result);
-        if (result.Response.View.length) {
-          this.positionService.selectPosition(
-            result.Response.View[0].Result[0].Location.DisplayPosition
-          );
-        }
+        callback(result);
       }, error => {
-        alert(error);
+        console.error(error);
       });
+  }
+
+  navigate(string) {
+    this.fetchGeocode({
+        searchtext: string,
+        gen: '8'
+    }, this.positionService.selectPosition.bind(this.positionService));
   }
 
   search () {
@@ -41,13 +39,22 @@ export default class ControlCtrl {
       });
   }
 
+  getWaypointNames() {
+    return this.routeService.getWaypointNames();
+  }
+
   addToWaypoints(result) {
-    this.waypoints.push(result);
+    this.fetchGeocode({
+        searchtext: result,
+        gen: '8'
+    }, response => {
+      this.routeService.addWaypoint(response, result);
+    });
   }
 
   removeWaypoint(i) {
-    this.waypoints.slice(i, 1);
+    this.routeService.removeWaypoint(i);
   }
 }
 
-ControlCtrl.$inject = ['$window', '$element', 'PlatformService', 'PositionService'];
+ControlCtrl.$inject = ['$window', '$element', 'PlatformService', 'PositionService', 'RouteService'];
