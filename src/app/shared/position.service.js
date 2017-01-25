@@ -13,3 +13,5 @@ export default class PositionService {
         return this.state.selectedPosition;
     }
 }
+
+PositionService.$inject = ['$rootScope'];

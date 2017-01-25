@@ -49,3 +49,5 @@ export default class ControlCtrl {
     this.waypoints.slice(i, 1);
   }
 }
+
+ControlCtrl.$inject = ['$window', '$element', 'PlatformService', 'PositionService'];

@@ -37,3 +37,5 @@ export default class MapCtrl {
     }
   }
 }
+
+MapCtrl.$inject = ['$scope', '$window', '$element', 'PlatformService', 'PositionService'];
