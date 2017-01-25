@@ -11,7 +11,9 @@ import '../style/app.css';
 
 const MODULE_NAME = 'app';
 
-angular.module(MODULE_NAME, [])
+angular.module(MODULE_NAME, [
+  require('angular-drag-drop')
+])
   .directive('map', map)
   .controller('MapCtrl', MapCtrl)
   .directive('control', control)
