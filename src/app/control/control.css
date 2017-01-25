@@ -1,0 +1,96 @@
+control {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.control, .results, .waypoints {
+    background-color: #FAFAFA;
+    padding: 10px 0;
+    margin: 10px;
+    border: 1px solid #DADADA;
+    box-shadow: 0 1px 1px #DADADA;
+    border-radius: 3px;
+    font-size: 1.2em;
+}
+
+.control > *{
+    display: inline-block;
+}
+
+.control .fa {
+    width: 30px;
+    text-align: center;
+}
+
+.control > .btn-menu {
+    cursor: pointer;
+    padding: 5px;
+}
+
+.control > .search {
+    border-left: 1px solid #DADADA;
+}
+
+.control > .search > input {
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    background: transparent;
+    border: none;
+}
+
+.results, .waypoints {
+    max-width: 350px;
+    padding: 0;
+}
+
+.results .result, .waypoints .waypoint {
+    box-shadow: 0 1px 1px #DADADA;
+    padding: 10px;
+    padding-left: 50px;
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+}
+
+.results .result:hover, .waypoints .waypoint:hover {
+    background-color: darkslateblue;
+    color: #FFF;
+}
+
+.results .result:hover .fa-plus, .waypoints .waypoint:hover .fa-trash {
+    display: block;
+}
+
+.results .result .fa-plus {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 42px;
+    text-align: center;
+    line-height: 42px;
+}
+
+.results .result .fa-plus:hover {
+    background-color: mediumpurple;
+    color: #FFF;
+}
+
+.waypoints .waypoint .fa-trash {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 42px;
+    text-align: center;
+    line-height: 42px;
+}
+
+.waypoints .waypoint .fa-trash:hover {
+    background-color: mediumpurple;
+    color: #FFF;
+}

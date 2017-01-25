@@ -1,0 +1,23 @@
+<div class="control">
+    <div class="btn-menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="search">
+        <i class="fa fa-search"></i>
+        <input type="text" placeholder="search" ng-model="control.searchString" 
+                ng-model-options="{ debounce: 100 }" ng-change="control.search()"></input>
+    </div>
+</div>
+<div class="waypoints" ng-if="control.waypoints.length">
+    <div class="waypoint" ng-repeat="waypoint in control.waypoints track by $index" 
+        ng-click="control.navigate(waypoint)">
+         {{waypoint}} <i class="fa fa-trash" ng-click="control.removeWaypoint($index)"></i>
+    </div>
+</div>
+
+<div class="results" ng-if="control.searchResults.length">
+    <div class="result" ng-repeat="result in control.searchResults | limitTo : 5" 
+         ng-click="control.navigate(result)">
+         <i class="fa fa-plus" ng-click="control.addToWaypoints(result)"></i> {{result}}
+    </div>
+</div>
