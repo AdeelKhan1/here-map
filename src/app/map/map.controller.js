@@ -5,12 +5,6 @@ export default class MapCtrl {
     this.routeService = RouteService;
 
     this.$onInit = () => {
-      this.getWindowDimensions = function () {
-          return {
-              'h': $window.innerHeight,
-              'w': $window.innerWidth
-          };
-      };
 
       $scope.$on('selected.position.updated', () => {
         let value = this.positionService.getPosition();
@@ -53,8 +47,6 @@ export default class MapCtrl {
           }
         });
       });
-
-      this.mapSize = `width: ${$window.innerWidth}px; height: ${$window.innerHeight}px`;
     }
 
     this.$postLink = () => {
