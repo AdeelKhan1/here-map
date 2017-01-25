@@ -24,7 +24,8 @@ export default class MapCtrl {
           let route,
               routeShape,
               strip;
-          if (result.response.route) {
+          if (result.response && result.response.route) {
+            this.map.getObjects().forEach(object => this.map.removeObject(object));
             // Pick the first route from the response:
             route = result.response.route[0];
             // Pick the route's shape:
