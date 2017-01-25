@@ -5,6 +5,7 @@ import control from './control/control.directive';
 import ControlCtrl from './control/control.controller';
 import PlatformService from './shared/platform.service';
 import PositionService from './shared/position.service';
+import RouteService from './shared/route.service';
 
 import '../style/app.css';
 
@@ -16,6 +17,7 @@ angular.module(MODULE_NAME, [])
   .directive('control', control)
   .controller('ControlCtrl', ControlCtrl)
   .service('PlatformService', PlatformService)
-  .service('PositionService', PositionService);
+  .service('PositionService', PositionService)
+  .service('RouteService', RouteService);
 
 export default MODULE_NAME;
