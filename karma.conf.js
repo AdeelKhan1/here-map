@@ -19,6 +19,10 @@ module.exports = function karmaConfig (config) {
 
     files: [
       // Grab all files in the app folder that contain .spec.
+      'https://js.api.here.com/v3/3.0/mapsjs-core.js',
+      'https://js.api.here.com/v3/3.0/mapsjs-service.js',
+      'https://js.api.here.com/v3/3.0/mapsjs-mapevents.js',
+      'https://js.api.here.com/v3/3.0/mapsjs-ui.js',
       'src/tests.webpack.js'
     ],
 
