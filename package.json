@@ -1,7 +1,7 @@
 {
-  "name": "angular-webpack-workflow",
+  "name": "here-map",
   "version": "1.0.0",
-  "description": "A workflow for Angular made with Webpack",
+  "description": "A map using HERE's javascript API in an angular-webpack workflow",
   "scripts": {
     "build": "rimraf dist && rimraf docs && webpack --bail --progress --profile",
     "server": "webpack-dev-server --history-api-fallback --inline --progress",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Foxandxss/angular-webpack-workflow.git"
+    "url": "https://github.com/Booyanach/here-map.git"
   },
-  "author": "Jesus Rodriguez",
+  "author": "Gonçalo Vieira",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Foxandxss/angular-webpack-workflow/issues"
+    "url": "https://github.com/Booyanach/here-map/issues"
   },
-  "homepage": "https://github.com/Foxandxss/angular-webpack-workflow",
+  "homepage": "https://github.com/Booyanach/here-map",
   "dependencies": {
     "angular": "^1.5.0",
     "angular-drag-drop": "^3.0.5"
