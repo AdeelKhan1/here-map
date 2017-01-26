@@ -59,7 +59,9 @@ export default class RouteService {
     removeWaypoint(i) {
         this.waypoints.splice(i, 1);
         this.names.splice(i, 1);
-        this.$rootScope.$broadcast('route.waypoints.updated');
+        if (this.waypoints.length > 1) {
+            this.$rootScope.$broadcast('route.waypoints.updated');
+        }
     }
 
     getParameters() {

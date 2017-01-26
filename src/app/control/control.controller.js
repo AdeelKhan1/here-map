@@ -5,7 +5,7 @@ export default class ControlCtrl {
     this.routeService = RouteService;
     this.$scope = $scope;
 
-    this.searchString = "";
+    this.searchString = '';
     this.searchResults = [];
     this.limit = 5;
   }
@@ -36,7 +36,7 @@ export default class ControlCtrl {
       result => {
         this.searchResults = result.suggestions;
       }, error => {
-        alert(error);
+        console.error(error);
       });
   }
 

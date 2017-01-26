@@ -1,6 +1,7 @@
 export default class MainCtrl {
     constructor($scope, $window, $timeout) {
         this.timer;
+        this.mapSize;
 
         this.$scope = $scope;
         this.$window = $window;
